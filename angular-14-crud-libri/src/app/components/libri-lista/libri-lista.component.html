@@ -1,0 +1,39 @@
+
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="cerca titolo"
+          [(ngModel)]="titolo"/>
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            (click)="cercaLibro()">
+            CERCA
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- ngFor è una direttiva in Angular usata per ripetere elementi nel DOM sulla base di un iterabile.  -->
+    <div class="col-md-6">
+      <h4>LISTA LIBRI</h4>
+      <ul class="list-group">
+        <li class="list-group-item"
+          *ngFor="let librii of libri; let i = index"
+          [class.active]="i == indice"
+          (click)="impostaLibro(librii, i)" >
+         <b>titolo:</b> {{ librii.titolo }}
+        </li>
+      </ul>
+  
+      <button class="m-3 btn btn-sm btn-danger" (click)="eliminaTuttiLibri()">
+        RIMUOVI TUTTI
+      </button>
+    </div>
+    <!-- richiama la libri info html   -->
+    <div class="col-md-6">
+      <app-libri-info [modalita]="true" [librii]="librii" ></app-libri-info>
+    </div>
+  </div>

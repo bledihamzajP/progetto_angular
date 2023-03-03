@@ -1,0 +1,66 @@
+<div>
+  <!--  definisce il modulo che gli utenti possono compilare per inviare un nuovo libro. 
+    I campi di input includono i campi di libro Quando l'utente fa clic sul pulsante "Invia", 
+    salvaLibro()viene chiamata la funzione per inviare i dati del modulo al server-->
+    <div class="submit-form">
+      <!--!invio significa che invio è falsa. Quando diventa true, l'elemento verrà rimosso. 
+      
+      ngModel Viene utilizzato per associare il valore di un elemento di input a una proprietà nella classe del componente 
+      e aggiornare tale proprietà ogni volta che il valore nell'elemento di input cambia e viceversa-->
+      
+      <div *ngIf="!invio">
+        <div class="form-group">
+          <label for="titolo">titolo</label>
+          <input
+            type="text"
+            class="form-control"
+            id="titolo"
+            required
+            [(ngModel)]="libro.titolo"
+            name="titolo"/>
+        </div>
+
+        <div class="form-group">
+          <label for="descrizione">descrizione</label>
+          <input
+            class="form-control"
+            id="descrizione"
+            required
+            [(ngModel)]="libro.descrizione"
+            name="descrizione"/>
+        </div>
+        <div class="form-group">
+            <label for="prezzo">prezzo</label>
+            <input
+              class="form-control"
+              id="prezzo"
+              required
+              [(ngModel)]="libro.prezzo"
+              name="prezzo"/>
+          </div>
+          <div class="form-group">
+            <label for="autore">autore</label>
+            <input
+              class="form-control"
+              id="autore"
+              required
+              [(ngModel)]="libro.autore"
+              name="autore"
+            />
+          </div>
+  <!--  bottone che richiama la funzione salvalibro-->
+        <button (click)="salvaLibro()" class="btn btn-success">invia</button>
+      </div>
+  <!--  Se l'invio ha esito positivo, il invio flag viene impostato su truee viene visualizzato un messaggio di successo 
+         insieme a un pulsante per aggiungere un nuovo libro  -->
+      <div *ngIf="invio">
+        <h4>Libro modificato con successo!</h4>
+        <button class="btn btn-success" (click)="nuovoLibro()">Aggiungi</button>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
